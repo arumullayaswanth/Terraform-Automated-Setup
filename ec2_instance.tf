@@ -25,7 +25,7 @@ resource "aws_instance" "one" {
 #Apply the Configuration (creates the EC2 instance)
 #terraform apply -auto-approve
 
-#Destroy the Instance (if needed)
+#Destroy the Instance (if needed)/to delete resources
 #terraform destroy -auto-approve
        
 
