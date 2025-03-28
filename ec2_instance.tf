@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "one" {
-  ami = "ami-03eb6185d756497f8"  # Amazon Linux 2 AMI
+  ami = "ami-02f624c08a83ca16f"  # Amazon Linux 2 AMI
   instance_type = "t2.micro"  # Free-tier eligible instance type
 
   tags = {
