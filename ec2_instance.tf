@@ -30,6 +30,7 @@ resource "aws_instance" "one" {
 
 
 /*
+#Terraform Configuration for AWS EC2 5 Instance
 provider "aws" {
   region = "ap-south-1"  # AWS region (Mumbai)
 }
