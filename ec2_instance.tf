@@ -27,5 +27,22 @@ resource "aws_instance" "one" {
 
 #Destroy the Instance (if needed)/to delete resources
 #terraform destroy -auto-approve
+
+
+/*
+provider "aws" {
+  region = "ap-south-1"  # AWS region (Mumbai)
+}
+
+resource "aws_instance" "one" {
+  count         = 5  # Creates 5 EC2 instances
+  ami           = "ami-0b41f7055516b991a"  # AMI ID (Amazon Linux 2 in ap-south-1)
+  instance_type = "t2.micro"  # Free-tier eligible instance type
+
+  tags = {
+    Name = "TerraformInstance-${count.index + 1}"  # Unique name for each instance
+  }
+}
+*/
        
 
