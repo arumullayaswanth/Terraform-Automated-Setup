@@ -6,15 +6,15 @@ We can pass inputs for Terraform directly from the CLI.
 
 ```hcl
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-1"
 }
 
 resource "aws_instance" "one" {
-  ami           = "ami-0b41f7055516b991a"
+  ami           = "ami-02f624c08a83ca16f"
   instance_type = var.instance_type
   
   tags = {
-    Name = "raham-server"
+    Name = "yaswanth-server"
   }
 }
 
