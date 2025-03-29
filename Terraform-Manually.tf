@@ -15,8 +15,8 @@ resource "aws_instance" "one" {
 }
 
 
-#2️⃣ Find the EC2 Instance ID
-#✅ Running Terraform Commands
+2️⃣ Find the EC2 Instance ID
+✅ Running Terraform Commands
 # Run this command to get the instance ID of the existing EC2:
 aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --output table
 
@@ -31,17 +31,17 @@ aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --o
 */
 
 
-#3️⃣ Import the EC2 Instance
+3️⃣ Import the EC2 Instance
 
 terraform import aws_instance.one i-0f4c0d5d3bb6dc758
 
-#✅ This command tells Terraform to track the manually created instance.
+✅ This command tells Terraform to track the manually created instance.
 
 
-#4️⃣ View Imported Resource Configuration
+4️⃣ View Imported Resource Configuration
 #After importing, run:
 terraform show
-#✅ Copy and paste the output into main.tf, so Terraform can manage it properly.
+✅ Copy and paste the output into main.tf, so Terraform can manage it properly.
 
 #5️⃣ Update main.tf with Imported Instance Detail
 resource "aws_instance" "one" {
