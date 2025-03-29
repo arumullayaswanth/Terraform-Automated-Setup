@@ -125,11 +125,11 @@ provider "aws" {
 
 resource "aws_instance" "one" {
   count         = var.instance_count
-  ami           = "ami-03eb6185d756497f8"
+  ami           = "ami-02f624c08a83ca16f"
   instance_type = var.instance_type
 
   tags = {
-    Name = "raham-server-${count.index + 1}"  # Unique name for each instance
+    Name = "yaswanth-server-${count.index + 1}"
   }
 }
 ```
