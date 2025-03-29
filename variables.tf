@@ -1,6 +1,6 @@
 # mkdir terraform
 # cd terraform
-
+# example -1
 # 1️⃣ main.tf (Terraform Configuration)
 
 provider "aws" {
@@ -40,4 +40,4 @@ terraform state list
 terraform destroy -auto-approve
 terraform destroy -auto-approve -target="aws_instance.one[1]"
 */
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
