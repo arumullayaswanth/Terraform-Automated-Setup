@@ -64,11 +64,19 @@ terraform show
 ### **5️⃣ Update `main.tf` with Imported Instance Details**
 
 ```hcl
+provider "aws" {
+  region = "us-east-1"
+}
+
 resource "aws_instance" "one" {
-  ami           = "ami-0b41f7055516b991a"  # Replace with actual AMI
-  instance_type = "t2.micro"  # Replace with actual instance type
+  ami                    = "ami-02f624c08a83ca16f"
+  instance_type          = "t2.micro"
+  key_name               = "my-Linux-keypair"
+  subnet_id              = "subnet-0d3f6eae9f19fc8b4"
+  vpc_security_group_ids = ["sg-00027bab2ce18a7e3"]
+
   tags = {
-    Name = "ImportedInstance"
+    Name = "Manually"
   }
 }
 ```
