@@ -25,7 +25,8 @@ resource "aws_instance" "one" {
 Run this command to get the **instance ID** of the existing EC2:
 
 ```bash
-aws ec2 describe-instances --query "Reservations[*].Instances[*].InstanceId" --output table
+aws ec2 describe-instances --region us-east-1 --query "Reservations[*].Instances[*].InstanceId" --output table
+
 ```
 
 ➡️ **Example output:**
