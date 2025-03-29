@@ -164,10 +164,13 @@ Would you like additional enhancements like attaching the EBS volume to the EC2 
 ```sh
 # Initialize Terraform
 terraform init
-
+```
+```sh
 # Apply configuration
 terraform apply --auto-approve
 
+```
+```sh
 # Destroy resources
 terraform destroy --auto-approve
 ```
