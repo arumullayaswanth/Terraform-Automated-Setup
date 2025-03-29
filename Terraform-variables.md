@@ -163,6 +163,7 @@ instance_type  = "t2.medium"
 ```
 
 ### ✅ Running Terraform with Different Environments
+### ✅ Running Terraform Commands
 
 ```bash
 # Run Terraform with the development environment
