@@ -1,10 +1,31 @@
-# mkdir terraform
-# cd terraform
+# Terraform Variable Files
 
+Terraform **variable files** (`.tfvars`) allow you to store variables separately, making configurations more modular and reusable.
 
-#example-1
-# 1️⃣ main.tf (Terraform Configuration)
+---
 
+## 📌 Why Use Terraform Variable Files?
+
+- Separates configuration logic from variable values.
+- Enables different environments (e.g., dev, test, prod) with different settings.
+- Improves maintainability and flexibility in infrastructure automation.
+
+---
+
+## 📂 Creating a Terraform Project
+
+```bash
+mkdir terraform
+cd terraform
+```
+
+---
+
+## Example 1️⃣: Basic EC2 Instance Deployment with Variables
+
+### 1️⃣ `main.tf` (Terraform Configuration)
+
+```hcl
 provider "aws" {
   region = "us-east-1"  # AWS Region (Mumbai)
 }
@@ -30,22 +51,24 @@ variable "instance_count" {
   type = number
   default = 5  # Default value
 }
+```
 
+### ✅ Running Terraform Commands
 
-/*
-✅ Running Terraform Commands
+```bash
 terraform init
 terraform plan
 terraform apply -auto-approve
 terraform destroy -auto-approve
-*/
+```
 
+---
 
+## Example 2️⃣: Multiple EC2 Instances with Variable Files
 
-----------------------------------------------------------------------------------------------------------
-# example -2
-# 1️⃣ main.tf (Terraform Configuration)
+### 1️⃣ `main.tf`
 
+```hcl
 provider "aws" {
   region = "us-east-1"
 }
@@ -59,9 +82,6 @@ resource "aws_instance" "one" {
     Name = "yaswanth-${count.index + 1}"  # Unique instance names
   }
 }
-
-# 2️⃣ variables.tf (Declaring Variables)
-
 variable "instance_count" {
   description = "Number of EC2 instances to launch"
   type        = number
@@ -73,21 +93,42 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
+```
 
-/*
-✅ Running Terraform Commands
+### 2️⃣ `variables.tf`
+
+```hcl
+variable "instance_count" {
+  description = "Number of EC2 instances to launch"
+  type        = number
+  default     = 3
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t2.micro"
+}
+```
+
+### ✅ Running Terraform Commands
+
+```bash
 terraform init       # Initialize Terraform
 terraform plan       # Preview changes
 terraform apply -auto-approve  # Deploy EC2 instances
 terraform state list
 terraform destroy -auto-approve
 terraform destroy -auto-approve -target="aws_instance.one[1]"
-*/
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
 
-# example -2
-#1️⃣ vim main.tf (Terraform Configuration)
+---
 
+## Example 3️⃣: Using Different Environments (Development & Testing)
+
+### 1️⃣ `main.tf`
+
+```hcl
 provider "aws" {
   region = "us-east-1"
 }
@@ -101,43 +142,48 @@ resource "aws_instance" "one" {
     Name = "raham-server-${count.index + 1}"  # Unique name for each instance
   }
 }
+```
 
-#2️⃣ vim variable.tf (Declaring Variables) 
+### 2️⃣ `variables.tf`
 
+```hcl
 variable "instance_count" {
-  description = "Number of EC2 instances to create" #  description and an optional default value.
-  type        = number                  #type, and an optional default value.
+  description = "Number of EC2 instances to create"
+  type        = number
 }
 
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
 }
+```
 
-#3️⃣ vim dev.tfvars (For Development Environment)
+### 3️⃣ `dev.tfvars` (Development Environment)
 
+```hcl
 instance_count = 1
 instance_type  = "t2.micro"
+```
 
-#4️⃣ vim test.tfvars (For Testing Environment)
+### 4️⃣ `test.tfvars` (Testing Environment)
 
+```hcl
 instance_count = 2
 instance_type  = "t2.medium"
+```
 
-/*
+### ✅ Running Terraform with Different Environments
 
-✅ Running Terraform with Different Environments
-Run Terraform with the dev environment:
+```bash
+# Run Terraform with the development environment
 terraform apply -var-file="dev.tfvars" -auto-approve
 
-Run Terraform with the test environment:
+# Run Terraform with the testing environment
 terraform apply -var-file="test.tfvars" -auto-approve
 
-Destroy resources for a specific environment:
+# Destroy resources for a specific environment
 terraform destroy -var-file="dev.tfvars" -auto-approve
+```
 
-*/
-
-
-
+✅ **Using variable files makes Terraform configurations more modular and environment-specific!**
 
