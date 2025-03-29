@@ -59,50 +59,6 @@ resource "aws_instance" "four" {
 }
 ```
 
-## Suggested Fixes & Best Practices
-1. **S3 Bucket Naming**:
-   - AWS enforces globally unique bucket names.
-   - Make sure `rahamshaik9988-terraform-bucket` is unique across AWS.
-
-2. **EBS Volume Availability Zone**:
-   - Ensure the instance and volume are in the same availability zone if attaching the volume to the instance.
-   - Example: If your EC2 instance is in `us-east-1a`, then set `availability_zone = "us-east-1a"`.
-
-3. **IAM User Name**:
-   - AWS IAM usernames should be unique within your account.
-
-4. **Security Groups & Key Pair for EC2**:
-   - You might need to add a security group and key pair for SSH access.
-
-## ✅ Best Practices & Recommendations
-- **S3 Bucket Naming**: Ensure the bucket name is unique across AWS.
-- **EBS Volume Availability Zone**: Match the availability zone with the EC2 instance.
-- **IAM User Naming**: Ensure unique IAM user names in your AWS account.
-- **Security Groups & Key Pair for EC2**: Add a security group and key pair for SSH access.
-- **Check AMI Availability**: Make sure the AMI ID is available in your AWS region.
-
-Would you like additional enhancements like attaching the EBS volume to the EC2 instance? 🚀
-
-## Running Terraform Commands
-```sh
-# Initialize Terraform
-terraform init
-
-# Apply configuration
-terraform apply --auto-approve
-
-# Destroy resources
-terraform destroy --auto-approve
-```
-
-
-
-
-
-
-
-
-
 
 
 ## Terraform Configuration with Line-by-Line Comments
@@ -179,6 +135,42 @@ resource "aws_instance" "four" {
 ```
 
 ---
+
+## Suggested Fixes & Best Practices
+1. **S3 Bucket Naming**:
+   - AWS enforces globally unique bucket names.
+   - Make sure `rahamshaik9988-terraform-bucket` is unique across AWS.
+
+2. **EBS Volume Availability Zone**:
+   - Ensure the instance and volume are in the same availability zone if attaching the volume to the instance.
+   - Example: If your EC2 instance is in `us-east-1a`, then set `availability_zone = "us-east-1a"`.
+
+3. **IAM User Name**:
+   - AWS IAM usernames should be unique within your account.
+
+4. **Security Groups & Key Pair for EC2**:
+   - You might need to add a security group and key pair for SSH access.
+
+## ✅ Best Practices & Recommendations
+- **S3 Bucket Naming**: Ensure the bucket name is unique across AWS.
+- **EBS Volume Availability Zone**: Match the availability zone with the EC2 instance.
+- **IAM User Naming**: Ensure unique IAM user names in your AWS account.
+- **Security Groups & Key Pair for EC2**: Add a security group and key pair for SSH access.
+- **Check AMI Availability**: Make sure the AMI ID is available in your AWS region.
+
+Would you like additional enhancements like attaching the EBS volume to the EC2 instance? 🚀
+
+## Running Terraform Commands
+```sh
+# Initialize Terraform
+terraform init
+
+# Apply configuration
+terraform apply --auto-approve
+
+# Destroy resources
+terraform destroy --auto-approve
+```
 
 
 
