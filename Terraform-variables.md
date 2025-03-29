@@ -166,6 +166,12 @@ instance_type  = "t2.medium"
 ### ✅ Running Terraform Commands
 
 ```bash
+# Development environment
+terraform apply -var-file="dev.tfvars" -auto-approve -state="dev.tfstate"
+
+# Testing environment
+terraform apply -var-file="test.tfvars" -auto-approve -state="test.tfstate"
+
 # Run Terraform with the development environment
 terraform apply -var-file="dev.tfvars" -auto-approve
 
