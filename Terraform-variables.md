@@ -75,39 +75,29 @@ provider "aws" {
 
 resource "aws_instance" "one" {
   count         = var.instance_count
-  ami           = "ami-03eb6185d756497f8"
+  ami           = "ami-02f624c08a83ca16f"
   instance_type = var.instance_type
 
   tags = {
-    Name = "yaswanth-${count.index + 1}"  # Unique instance names
+    Name = "yaswanth-server-${count.index + 1}"
   }
 }
-variable "instance_count" {
-  description = "Number of EC2 instances to launch"
-  type        = number
-  default     = 3
-}
 
-variable "instance_type" {
-  description = "EC2 instance type"
-  type        = string
-  default     = "t2.micro"
-}
 ```
 
 ### 2️⃣ `variables.tf`
 
 ```hcl
 variable "instance_count" {
-  description = "Number of EC2 instances to launch"
+  description = "Number of EC2 instances to create"
   type        = number
-  default     = 3
+  default     = 3  # Change as needed
 }
 
 variable "instance_type" {
-  description = "EC2 instance type"
+  description = "Type of EC2 instance"
   type        = string
-  default     = "t2.micro"
+  default     = "t2.micro"  # Change as needed
 }
 ```
 
