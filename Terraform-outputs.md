@@ -26,7 +26,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "one" {
-  ami           = "ami-03eb6185d756497f8"
+  ami           = "ami-02f624c08a83ca16f"
   instance_type = "t2.medium"
 
   tags = {
