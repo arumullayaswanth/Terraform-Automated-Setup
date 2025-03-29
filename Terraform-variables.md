@@ -164,6 +164,8 @@ instance_type  = "t2.medium"
 
 ### ✅ Running Terraform with Different Environments
 ### ✅ Running Terraform Commands
+### 1️⃣ Use Separate State Files for Each Environment
+By default, Terraform uses a single state file (terraform.tfstate). To avoid modifying the same resources, you can use different backend state files:
 
 ```bash
 # Development environment
