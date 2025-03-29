@@ -1,5 +1,14 @@
 # Terraform Configuration with Best Practices
 
+## Overview
+This Terraform script provisions an AWS environment that includes:
+- An S3 bucket
+- An EBS volume
+- An IAM user
+- An EC2 instance
+
+---
+
 ## Provider Configuration
 ```hcl
 # Specifies the AWS provider and region
@@ -65,6 +74,15 @@ resource "aws_instance" "four" {
 4. **Security Groups & Key Pair for EC2**:
    - You might need to add a security group and key pair for SSH access.
 
+## ✅ Best Practices & Recommendations
+- **S3 Bucket Naming**: Ensure the bucket name is unique across AWS.
+- **EBS Volume Availability Zone**: Match the availability zone with the EC2 instance.
+- **IAM User Naming**: Ensure unique IAM user names in your AWS account.
+- **Security Groups & Key Pair for EC2**: Add a security group and key pair for SSH access.
+- **Check AMI Availability**: Make sure the AMI ID is available in your AWS region.
+
+Would you like additional enhancements like attaching the EBS volume to the EC2 instance? 🚀
+
 ## Running Terraform Commands
 ```sh
 # Initialize Terraform
@@ -84,16 +102,8 @@ terraform destroy --auto-approve
 
 
 
-# Terraform Configuration with Comments & Best Practices
 
-## Overview
-This Terraform script provisions an AWS environment that includes:
-- An S3 bucket
-- An EBS volume
-- An IAM user
-- An EC2 instance
 
----
 
 ## Terraform Configuration with Line-by-Line Comments
 
@@ -170,12 +180,5 @@ resource "aws_instance" "four" {
 
 ---
 
-## ✅ Best Practices & Recommendations
-- **S3 Bucket Naming**: Ensure the bucket name is unique across AWS.
-- **EBS Volume Availability Zone**: Match the availability zone with the EC2 instance.
-- **IAM User Naming**: Ensure unique IAM user names in your AWS account.
-- **Security Groups & Key Pair for EC2**: Add a security group and key pair for SSH access.
-- **Check AMI Availability**: Make sure the AMI ID is available in your AWS region.
 
-Would you like additional enhancements like attaching the EBS volume to the EC2 instance? 🚀
 
