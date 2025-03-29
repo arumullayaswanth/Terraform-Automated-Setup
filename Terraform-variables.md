@@ -164,6 +164,19 @@ instance_type  = "t2.medium"
 
 ### ✅ Running Terraform with Different Environments
 ### ✅ Running Terraform Commands
+
+```bash
+# Run Terraform with the development environment
+terraform apply -var-file="dev.tfvars" -auto-approve
+
+# Run Terraform with the testing environment
+terraform apply -var-file="test.tfvars" -auto-approve
+
+# Destroy resources for a specific environment
+terraform destroy -var-file="dev.tfvars" -auto-approve
+```
+
+### ✅ Solutions to Ensure New Instances are Created Instead of Modifying Existing Ones
 ### 1️⃣ Use Separate State Files for Each Environment
 By default, Terraform uses a single state file (terraform.tfstate). To avoid modifying the same resources, you can use different backend state files:
 
@@ -174,14 +187,7 @@ terraform apply -var-file="dev.tfvars" -auto-approve -state="dev.tfstate"
 # Testing environment
 terraform apply -var-file="test.tfvars" -auto-approve -state="test.tfstate"
 
-# Run Terraform with the development environment
-terraform apply -var-file="dev.tfvars" -auto-approve
 
-# Run Terraform with the testing environment
-terraform apply -var-file="test.tfvars" -auto-approve
-
-# Destroy resources for a specific environment
-terraform destroy -var-file="dev.tfvars" -auto-approve
 ```
 
 ✅ **Using variable files makes Terraform configurations more modular and environment-specific!**
