@@ -48,5 +48,7 @@ terraform apply -auto-approve
 terraform output
 ✅ Want to Save Output to a File?
 terraform output > output.txt
+
+terraform destroy -auto-approve
 */
 
