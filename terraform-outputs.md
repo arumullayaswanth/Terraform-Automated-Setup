@@ -1,16 +1,26 @@
-/*
-1️⃣ What is Terraform Output?
-Terraform outputs help display important resource properties after deployment.
+# 📌 Terraform Outputs: Displaying Resource Details
 
-Used to fetch values like public IP, DNS, instance type, VPC ID, etc.
+## 1️⃣ What is Terraform Output?
+Terraform **outputs** help display important resource properties after deployment. These are useful for fetching dynamically assigned values like:
+- Public & private IP addresses
+- DNS names
+- Instance type, VPC ID, and more
 
+### 📂 Project Structure
+```
 ├── main.tf         # Main Terraform configuration
 ├── variables.tf    # Variables declaration
 ├── outputs.tf      # Terraform outputs
 ├── dev.tfvars      # Dev environment variables
 ├── test.tfvars     # Test environment variables
-*/
+```
 
+---
+
+## 2️⃣ Terraform Configuration
+
+### **`main.tf` (Terraform Configuration)**
+```hcl
 provider "aws" {
   region = "us-east-1"
 }
@@ -23,7 +33,10 @@ resource "aws_instance" "one" {
     Name = "yaswanth-server"
   }
 }
+```
 
+### **`outputs.tf` (Terraform Outputs)**
+```hcl
 output "public_ip" {
   value = aws_instance.one.public_ip
 }
@@ -39,16 +52,32 @@ output "public_dns" {
 output "private_dns" {
   value = aws_instance.one.private_dns
 }
+```
 
+---
 
-/*
-🚀 Running Terraform to Get Outputs
+## 🚀 Running Terraform to Get Outputs
+
+### **Initialize Terraform**
+```bash
 terraform init
+```
+
+### **Apply Changes & Get Outputs**
+```bash
 terraform apply -auto-approve
 terraform output
-✅ Want to Save Output to a File?
-terraform output > output.txt
+```
 
+### ✅ **Want to Save Output to a File?**
+```bash
+terraform output > output.txt
+```
+
+### **Destroy Resources**
+```bash
 terraform destroy -auto-approve
-*/
+```
+
+✅ Now, Terraform will automatically display the important information after deployment! 🎯
 
