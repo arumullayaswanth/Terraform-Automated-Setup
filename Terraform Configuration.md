@@ -19,17 +19,9 @@ provider "aws" {
 
 ## AWS S3 Bucket
 ```hcl
-# Creates an S3 bucket
-resource "aws_s3_bucket" "one" {
-  bucket = "yaswanth-terraform-bucket"  # Ensure unique name
-}
-```
-
-## AWS EBS Volume
-```hcl
 # Create an S3 Bucket
 resource "aws_s3_bucket" "example" {
-  bucket = "my-unique-bucket-9988"  # Must be globally unique
+  bucket = "yaswanth523192"  # Must be globally unique
 }
 
 # Enable Versioning on the S3 Bucket
@@ -47,6 +39,19 @@ resource "aws_s3_bucket_tagging" "tags_example" {
   tag_set = {
     Name        = "MyS3Bucket"
     Environment = "Production"
+  }
+}
+```
+
+## AWS EBS Volume
+```hcl
+# Creates an EBS volume
+resource "aws_ebs_volume" "two" {
+  size              = 20  # Volume size in GB
+  availability_zone = "us-east-1b"  # Ensure this matches the EC2 instance's AZ
+
+  tags = {
+    Name = "raham-ebs"  # Tagging the EBS volume for identification
   }
 }
 
