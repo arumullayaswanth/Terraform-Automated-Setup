@@ -65,10 +65,10 @@ resource "aws_ebs_volume" "two" {
 ```hcl
 # Create an IAM user with additional configurations
 resource "aws_iam_user" "three" {
-  name = "raham-user"  # IAM username
+  name = "yaswanth-user"  # IAM username
 
   tags = {
-    Name        = "Raham User"
+    Name        = "yaswanth User"
     Environment = "Production"
   }
 }
@@ -88,7 +88,7 @@ resource "aws_instance" "four" {
   instance_type = "t2.micro"  # Instance type (Free-tier eligible)
 
   tags = {
-    Name = "Raham-terraserver"  # Name tag for the EC2 instance
+    Name = "yaswanth-terraserver"  # Name tag for the EC2 instance
   }
 }
 ```
