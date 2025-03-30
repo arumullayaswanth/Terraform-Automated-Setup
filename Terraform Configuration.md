@@ -84,7 +84,7 @@ resource "aws_iam_user_policy_attachment" "admin_access" {
 ```hcl
 # Creates an EC2 instance
 resource "aws_instance" "four" {
-  ami           = "ami-03eb6185d756497f8"  # Amazon Linux 2 AMI ID (ensure it's available in your region)
+  ami           = "ami-02f624c08a83ca16f"  # Amazon Linux 2 AMI ID (ensure it's available in your region)
   instance_type = "t2.micro"  # Instance type (Free-tier eligible)
 
   tags = {
