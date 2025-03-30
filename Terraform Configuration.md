@@ -63,9 +63,20 @@ resource "aws_ebs_volume" "two" {
 
 ## AWS IAM User
 ```hcl
-# Creates an IAM user
+# Create an IAM user with additional configurations
 resource "aws_iam_user" "three" {
   name = "raham-user"  # IAM username
+
+  tags = {
+    Name        = "Raham User"
+    Environment = "Production"
+  }
+}
+
+# Attach the AdministratorAccess policy directly to the user
+resource "aws_iam_user_policy_attachment" "admin_access" {
+  user       = aws_iam_user.three.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"  # AWS managed policy for full admin access
 }
 ```
 
