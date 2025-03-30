@@ -122,7 +122,12 @@ resource "aws_instance" "four" {
 ```sh
 terraform apply -replace="aws_instance.four" --auto-approve
 ```
-
+```sh
+terraform taint aws_instance.four
+```
+```sh
+terraform apply --auto-approve
+```
 ---
 
 ## Why Use `-replace` in Terraform?
