@@ -45,13 +45,17 @@ resource "aws_s3_bucket_tagging" "tags_example" {
 
 ## AWS EBS Volume
 ```hcl
-# Creates an EBS volume
+# Creates an EBS volume with encryption enabled
 resource "aws_ebs_volume" "two" {
   size              = 20  # Volume size in GB
   availability_zone = "us-east-1b"  # Ensure this matches the EC2 instance's AZ
+  encrypted         = true  # Enables encryption for security
+  volume_type       = "gp3"  # Optimized performance volume type
+  iops              = 3000  # Provisioned IOPS for better performance
+  throughput        = 125  # Throughput in MB/s (gp3 only)
 
   tags = {
-    Name = "raham-ebs"  # Tagging the EBS volume for identification
+    Name = "yaswanth-ebs"  # Tagging the EBS volume for identification
   }
 }
 
