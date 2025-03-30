@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "example" {
 
 # Enable Versioning on the S3 Bucket
 resource "aws_s3_bucket_versioning" "versioning_example" {
-  bucket = aws_s3_bucket.example.id
+  bucket = aws_s3_bucket.example.id            # Corrected reference to match the bucket name
   versioning_configuration {
     status = "Enabled"
   }
