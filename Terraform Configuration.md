@@ -21,21 +21,35 @@ provider "aws" {
 ```hcl
 # Creates an S3 bucket
 resource "aws_s3_bucket" "one" {
-  bucket = "rahamshaik9988-terraform-bucket"  # Ensure unique name
+  bucket = "yaswanth-terraform-bucket"  # Ensure unique name
 }
 ```
 
 ## AWS EBS Volume
 ```hcl
-# Creates an EBS volume
-resource "aws_ebs_volume" "two" {
-  size              = 20  # Volume size in GB
-  availability_zone = "us-east-1b"  # Ensure this matches the EC2 instance's AZ
+# Create an S3 Bucket
+resource "aws_s3_bucket" "example" {
+  bucket = "my-unique-bucket-9988"  # Must be globally unique
+}
 
-  tags = {
-    Name = "raham-ebs"  # Tagging the EBS volume for identification
+# Enable Versioning on the S3 Bucket
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.example.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
+
+# Add Tags (Optional)
+resource "aws_s3_bucket_tagging" "tags_example" {
+  bucket = aws_s3_bucket.example.id
+
+  tag_set = {
+    Name        = "MyS3Bucket"
+    Environment = "Production"
+  }
+}
+
 ```
 
 ## AWS IAM User
