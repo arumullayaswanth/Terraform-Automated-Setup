@@ -103,26 +103,21 @@ provider "aws" {
   region = "us-east-1"  # Set AWS region to US East (N. Virginia)
 }
 
-# Create an S3 Bucket
+# Create an S3 Bucket with Tags
 resource "aws_s3_bucket" "example" {
   bucket = "yaswanth523192"  # Must be globally unique
+
+  tags = {
+    Name        = "MyS3Bucket"
+    Environment = "Production"
+  }
 }
 
 # Enable Versioning on the S3 Bucket
 resource "aws_s3_bucket_versioning" "versioning_example" {
-  bucket = aws_s3_bucket.example.id            # Corrected reference to match the bucket name
+  bucket = aws_s3_bucket.example.id
   versioning_configuration {
     status = "Enabled"
-  }
-}
-
-# Add Tags (Optional)
-resource "aws_s3_bucket_tagging" "tags_example" {
-  bucket = aws_s3_bucket.example.id
-
-  tag_set = {
-    Name        = "MyS3Bucket"
-    Environment = "Production"
   }
 }
 
@@ -131,15 +126,14 @@ resource "aws_ebs_volume" "two" {
   size              = 20  # Volume size in GB
   availability_zone = "us-east-1b"  # Ensure this matches the EC2 instance's AZ
   encrypted         = true  # Enables encryption for security
-  volume_type       = "gp3"  # Optimized performance volume type
-  iops              = 3000  # Provisioned IOPS for better performance
+  type              = "gp3"  # Specify the volume type
+  iops              = 3000  # Provisioned IOPS for gp3
   throughput        = 125  # Throughput in MB/s (gp3 only)
 
   tags = {
     Name = "yaswanth-ebs"  # Tagging the EBS volume for identification
   }
 }
-
 # Create an IAM user with additional configurations
 resource "aws_iam_user" "three" {
   name = "yaswanth-user"  # IAM username
