@@ -103,33 +103,66 @@ provider "aws" {
   region = "us-east-1"  # Set AWS region to US East (N. Virginia)
 }
 
-# Creates an S3 bucket
-resource "aws_s3_bucket" "one" {
-  bucket = "rahamshaik9988-terraform-bucket"  # Ensure the name is globally unique
+# Create an S3 Bucket
+resource "aws_s3_bucket" "example" {
+  bucket = "yaswanth523192"  # Must be globally unique
 }
 
-# Creates an EBS volume
-resource "aws_ebs_volume" "two" {
-  size              = 20  # Volume size in GB
-  availability_zone = "us-east-1b"  # Ensure this matches the EC2 instance's AZ
-
-  tags = {
-    Name = "raham-ebs"  # Tagging the EBS volume for identification
+# Enable Versioning on the S3 Bucket
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.example.id            # Corrected reference to match the bucket name
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 
-# Creates an IAM user
+# Add Tags (Optional)
+resource "aws_s3_bucket_tagging" "tags_example" {
+  bucket = aws_s3_bucket.example.id
+
+  tag_set = {
+    Name        = "MyS3Bucket"
+    Environment = "Production"
+  }
+}
+
+# Creates an EBS volume with encryption enabled
+resource "aws_ebs_volume" "two" {
+  size              = 20  # Volume size in GB
+  availability_zone = "us-east-1b"  # Ensure this matches the EC2 instance's AZ
+  encrypted         = true  # Enables encryption for security
+  volume_type       = "gp3"  # Optimized performance volume type
+  iops              = 3000  # Provisioned IOPS for better performance
+  throughput        = 125  # Throughput in MB/s (gp3 only)
+
+  tags = {
+    Name = "yaswanth-ebs"  # Tagging the EBS volume for identification
+  }
+}
+
+# Create an IAM user with additional configurations
 resource "aws_iam_user" "three" {
-  name = "raham-user"  # IAM username
+  name = "yaswanth-user"  # IAM username
+
+  tags = {
+    Name        = "yaswanth User"
+    Environment = "Production"
+  }
+}
+
+# Attach the AdministratorAccess policy directly to the user
+resource "aws_iam_user_policy_attachment" "admin_access" {
+  user       = aws_iam_user.three.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"  # AWS managed policy for full admin access
 }
 
 # Creates an EC2 instance
 resource "aws_instance" "four" {
-  ami           = "ami-03eb6185d756497f8"  # Amazon Linux 2 AMI ID (ensure it's available in your region)
+  ami           = "ami-02f624c08a83ca16f"  # Amazon Linux 2 AMI ID (ensure it's available in your region)
   instance_type = "t2.micro"  # Instance type (Free-tier eligible)
 
   tags = {
-    Name = "Raham-terraserver"  # Name tag for the EC2 instance
+    Name = "yaswanth-terraserver"  # Name tag for the EC2 instance
   }
 }
 ```
@@ -143,27 +176,62 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_s3_bucket" "one" {
-  bucket = "rahamshaik9988-terraform-bucket"
+# Create an S3 Bucket
+resource "aws_s3_bucket" "example" {
+  bucket = "yaswanth523192" 
 }
 
-resource "aws_ebs_volume" "two" {
-  size              = 20
-  availability_zone = "us-east-1b"
-  tags = {
-    Name = "raham-ebs"
+# Enable Versioning on the S3 Bucket
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.example.id            
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+resource "aws_s3_bucket_tagging" "tags_example" {
+  bucket = aws_s3_bucket.example.id
+
+  tag_set = {
+    Name        = "MyS3Bucket"
+    Environment = "Production"
   }
 }
 
-resource "aws_iam_user" "three" {
-  name = "raham-user"
+# Creates an EBS volume with encryption enabled
+resource "aws_ebs_volume" "two" {
+  size              = 20 
+  availability_zone = "us-east-1b"  
+  encrypted         = true  
+  volume_type       = "gp3"  
+  iops              = 3000  
+  throughput        = 125 
+
+  tags = {
+    Name = "yaswanth-ebs" 
+  }
 }
 
-resource "aws_instance" "four" {
-  ami           = "ami-03eb6185d756497f8"
-  instance_type = "t2.micro"
+# Create an IAM user with additional configurations
+resource "aws_iam_user" "three" {
+  name = "yaswanth-user" 
+
   tags = {
-    Name = "Raham-terraserver"
+    Name        = "yaswanth User"
+    Environment = "Production"
+  }
+}
+resource "aws_iam_user_policy_attachment" "admin_access" {
+  user       = aws_iam_user.three.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"  
+}
+
+# Creates an EC2 instance
+resource "aws_instance" "four" {
+  ami           = "ami-02f624c08a83ca16f" 
+  instance_type = "t2.micro" 
+
+  tags = {
+    Name = "yaswanth-terraserver"  
   }
 }
 ```
