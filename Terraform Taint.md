@@ -60,44 +60,39 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Create an S3 Bucket
+# Create an S3 Bucket with Tags
 resource "aws_s3_bucket" "example" {
-  bucket = "yaswanth523192" 
-}
+  bucket = "yaswanth523192"  # Must be globally unique
 
-# Enable Versioning on the S3 Bucket
-resource "aws_s3_bucket_versioning" "versioning_example" {
-  bucket = aws_s3_bucket.example.id            
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
-# Add Tags to S3 Bucket
-resource "aws_s3_bucket_tagging" "tags_example" {
-  bucket = aws_s3_bucket.example.id
-  
-  tag_set = {
+  tags = {
     Name        = "MyS3Bucket"
     Environment = "Production"
   }
 }
 
-# Create an Encrypted EBS Volume
-resource "aws_ebs_volume" "two" {
-  size              = 20 
-  availability_zone = "us-east-1b"  
-  encrypted         = true  
-  volume_type       = "gp3"  
-  iops              = 3000  
-  throughput        = 125 
-
-  tags = {
-    Name = "yaswanth-ebs" 
+# Enable Versioning on the S3 Bucket
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.example.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 
-# Create an IAM User
+# Creates an EBS volume with encryption enabled
+resource "aws_ebs_volume" "two" {
+  size              = 20  
+  availability_zone = "us-east-1b"  
+  encrypted         = true  
+  type              = "gp3"  
+  iops              = 3000  
+  throughput        = 125  
+
+  tags = {
+    Name = "yaswanth-ebs"  
+  }
+}
+
+# Create an IAM user with additional configurations
 resource "aws_iam_user" "three" {
   name = "yaswanth-user" 
 
@@ -106,14 +101,12 @@ resource "aws_iam_user" "three" {
     Environment = "Production"
   }
 }
-
-# Attach Administrator Policy to IAM User
 resource "aws_iam_user_policy_attachment" "admin_access" {
   user       = aws_iam_user.three.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"  
 }
 
-# Create an EC2 Instance
+# Creates an EC2 instance
 resource "aws_instance" "four" {
   ami           = "ami-02f624c08a83ca16f" 
   instance_type = "t2.micro" 
