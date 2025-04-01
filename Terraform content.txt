@@ -14,3 +14,5 @@ Terraform Remote Backend.md
 Terraform Refresh Guide .md
 Terraform Local File.md
 Terraform Version Constraints.md
+Terraform Dynamic Block.md
+Terraform Aws Instances.md
