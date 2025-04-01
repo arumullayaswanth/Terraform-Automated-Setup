@@ -39,7 +39,7 @@ resource "aws_instance" "three" {
   subnet_id      = aws_subnet.two.id  # Attach instance to the subnet
   ami           = "ami-02f624c08a83ca16f"  # Amazon Machine Image ID
   instance_type = "t2.micro"  # Instance type
-  key_name      = "your-key-pair-name"  # SSH key pair for access
+  key_name      = "my-Key pair"  # SSH key pair for access
   tags = {
     Name = "${local.env}-server"  # Naming convention using local variable
   }
@@ -79,7 +79,7 @@ resource "aws_instance" "three" {
   subnet_id      = aws_subnet.two.id
   ami           = "ami-02f624c08a83ca16f"
   instance_type = "t2.micro"
-  key_name      = "your-key-pair-name"
+  key_name      = "my-Key pair"
   tags = {
     Name = "${local.env}-server"
   }
