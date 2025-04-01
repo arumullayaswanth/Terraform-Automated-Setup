@@ -9,7 +9,7 @@
 ## Step 1: Create a Terraform Configuration File
 
 ### Create a new directory and navigate to it:
-# Create a new directory for the Terraform setup
+Create a new directory for the Terraform setup
 ```sh
 mkdir terraform && cd terraform
 ```
