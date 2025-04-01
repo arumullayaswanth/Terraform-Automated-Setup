@@ -162,6 +162,9 @@ terraform workspace show
 ```sh
 terraform state list
 ```
+```sh
+terraform workspace list
+```
 
 This deploys the infrastructure in the **Testing** environment.
 
