@@ -7,7 +7,7 @@ Terraform-outputs.md
 Terraform-Manually.md
 Terraform Configuration.md
 Terraform Taint.md
-Terraform Locals.md
+Terraform Locals variables.md
 Terraform Workspaces.md
 Terraform Lifecycle.md
 Terraform Remote Backend.md
