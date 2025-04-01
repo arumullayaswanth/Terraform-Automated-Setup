@@ -12,3 +12,4 @@ Terraform Workspaces.md
 Terraform Lifecycle.md
 Terraform Remote Backend.md
 Terraform Refresh Guide .md
+Terraform Local File.md
