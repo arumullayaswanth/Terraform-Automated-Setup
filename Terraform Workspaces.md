@@ -140,7 +140,10 @@ This deploys the infrastructure in the **Development** environment.
 terraform workspace new test
 ```
 ```sh
-terraform workspace show
+terraform workspace select test
+```
+```sh
+terraform workspace list
 ```
 ```sh
 terraform workspace show
