@@ -8,13 +8,19 @@
 
 ## Step 1: Create a Terraform Configuration File
 
-Create a new directory and navigate to it:
+### Create a new directory and navigate to it:
 
 ```sh
 mkdir terraform && cd terraform
 ```
 
-Create a new file `main.tf` and add the following content:
+### Create a new file `main.tf`:
+
+```sh
+vim main.tf
+```
+
+### Open the file and add the following content:
 
 ```hcl
 provider "aws" {
@@ -79,13 +85,29 @@ resource "aws_security_group" "main" {
 
 ## Step 2: Initialize Terraform
 
-Run the following command to initialize the Terraform configuration:
+Run the following command to initialize Terraform:
 
 ```sh
 terraform init
 ```
 
-## Step 3: Apply the Configuration
+## Step 3: Validate Terraform Configuration
+
+To check for syntax errors, run:
+
+```sh
+terraform validate
+```
+
+## Step 4: Plan the Terraform Deployment
+
+To see what changes Terraform will make, run:
+
+```sh
+terraform plan
+```
+
+## Step 5: Apply the Configuration
 
 Run the following command to create resources on AWS:
 
@@ -93,16 +115,23 @@ Run the following command to create resources on AWS:
 terraform apply --auto-approve
 ```
 
-This will create an EC2 instance and a security group with dynamic ingress rules.
-
-## Step 4: Verify the Deployment
+## Step 6: Verify the Deployment
 
 Once the resources are created, go to the AWS Management Console and verify:
 
 - EC2 instance is running
 - Security group has the correct ingress rules
 
-## Step 5: Destroy Resources (Optional)
+
+```sh
+aws ec2 describe-instances --filters "Name=tag:Name,Values=Terraform-EC2"
+```
+
+```sh
+aws ec2 describe-security-groups --filters "Name=tag:Name,Values=terraform-sg"
+```
+
+## Step 7: Destroy Resources (Optional)
 
 If you want to delete the created resources, run:
 
@@ -110,9 +139,10 @@ If you want to delete the created resources, run:
 terraform destroy --auto-approve
 ```
 
-This will remove all Terraform-managed resources from AWS.
-
 ## Conclusion
 
-This guide demonstrated how to use a Terraform **dynamic block** to create reusable security group rules, reducing redundancy in your code. Happy Terraforming!
+This guide provides a step-by-step approach with individual commands to create and manage AWS resources using Terraform's dynamic block for security group rules. Happy Terraforming!
+
+
+
 
