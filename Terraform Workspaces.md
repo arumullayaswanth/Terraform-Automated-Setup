@@ -244,7 +244,11 @@ terraform workspace select default
 
 ```sh
 terraform workspace delete dev
+```
+```sh
 terraform workspace delete test
+```
+```sh
 terraform workspace delete prod
 ```
 
