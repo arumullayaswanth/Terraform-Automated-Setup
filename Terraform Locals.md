@@ -87,7 +87,6 @@ resource "aws_instance" "three" {
 ```
 
 
-
 ## Key Takeaways
 - **Avoid Overlapping CIDR Blocks**: Ensure subnets don't have the same CIDR block as the VPC.
 - **Use Locals for Region**: Makes configuration more reusable.
@@ -152,4 +151,34 @@ terraform destroy -auto-approve
 > Deletes all resources created by Terraform.
 
 ---
+
+## EC2 Instance Configuration
+
+```hcl
+resource "aws_instance" "three" {
+  subnet_id      = aws_subnet.two.id
+  ami           = "ami-02f624c08a83ca16f"
+  instance_type = "t2.micro"
+  key_name      = "your-key-pair-name"
+  lifecycle {
+    create_before_destroy = true
+  }
+  tags = {
+    Name = "${local.env}-server"
+  }
+}
+```
+
+## Solutions to Ensure New Instances are Created Instead of Modifying Existing Ones
+
+1. **Use ********************`create_before_destroy`******************** in ********************`lifecycle`******************** block:**
+
+   ```hcl
+   lifecycle {
+     create_before_destroy = true
+   }
+   ```
+
+   This ensures that a new instance is created before the old one is destroyed.
+
 
