@@ -1,0 +1,11 @@
+install_terraform_aws.sh
+AWS Credentials File.md
+ec2_instance.tf
+Terraform-variables.md
+Terraform-CLI.md
+Terraform-outputs.md
+Terraform-Manually.md
+Terraform Configuration.md
+Terraform Taint.md
+Terraform Locals.md
+Terraform Workspaces.md
