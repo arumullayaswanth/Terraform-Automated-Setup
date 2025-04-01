@@ -9,3 +9,4 @@ Terraform Configuration.md
 Terraform Taint.md
 Terraform Locals.md
 Terraform Workspaces.md
+Terraform Lifecycle.md
