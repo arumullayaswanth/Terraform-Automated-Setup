@@ -30,6 +30,32 @@ Providers supported by Terraform, there are officially 130 providers supported b
 - Google Cloud Platform
 - Kubernetes and so on
 
+This project automates the deployment of AWS EC2 instances using Terraform.\
+You can configure the **instance type** and **number of instances** using Terraform variables.
+
+## 🚀 Features
+
+- Deploys multiple EC2 instances on AWS
+- Uses variables for flexibility
+- Automatically tags instances
+- Simple and reusable Terraform setup
+
+---
+
+## 📌 Prerequisites
+
+Before running this Terraform script, ensure you have:
+
+1. **AWS CLI installed & configured**
+   ```bash
+   aws configure
+   ```
+2. **Terraform installed**
+   ```bash
+   terraform -version
+   ```
+
+---
 
 
 
@@ -260,32 +286,7 @@ depends_on = [
 
 
 
-This project automates the deployment of AWS EC2 instances using Terraform.\
-You can configure the **instance type** and **number of instances** using Terraform variables.
 
-## 🚀 Features
-
-- Deploys multiple EC2 instances on AWS
-- Uses variables for flexibility
-- Automatically tags instances
-- Simple and reusable Terraform setup
-
----
-
-## 📌 Prerequisites
-
-Before running this Terraform script, ensure you have:
-
-1. **AWS CLI installed & configured**
-   ```bash
-   aws configure
-   ```
-2. **Terraform installed**
-   ```bash
-   terraform -version
-   ```
-
----
 
 ## ⚙️ Setup Instructions
 
