@@ -22,15 +22,4 @@ Here are several of the major key benefits of using an IaC solution like Terrafo
 - **<span style="color: #E67E22;">Enhanced Security.</span>** IaC relies on automation that removes many security risks associated with human error. When an IaC-based solution is installed correctly, the overall security of your computing architecture and associated data improves massively.
 
 
-  # <span style="color: #FF6B6B;">Basic Terraform Folder Structure</span>
-
-```plaintext
-projectname/
-    |
-    |-- <span style="color: #4ECDC4;">provider.tf</span>
-    |-- <span style="color: #45B7D1;">version.tf</span>
-    |-- <span style="color: #A37EBA;">backend.tf</span>
-    |-- <span style="color: #FFA07A;">main.tf</span>
-    |-- <span style="color: #98D8C8;">variables.tf</span>
-    |-- <span style="color: #F7CAC9;">terraform.tfvars</span>
-    |-- <span style="color: #B5EAD7;">outputs.tf</span>
+ 
