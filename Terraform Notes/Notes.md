@@ -19,4 +19,18 @@ Here are several of the major key benefits of using an IaC solution like Terrafo
 - **<span style="color: #9B59B6;">Team Collaboration.</span>** Various team members can collaborate on IaC software in the same way they would with regular application code through tools like Github. Code can be easily linked to issue tracking systems for future use and reference.  
 - **<span style="color: #F39C12;">Error Reduction.</span>** IaC minimizes the probability of errors or deviations when provisioning your infrastructure. The code completely standardizes your setup, allowing applications to run smoothly and error-free without the constant need for admin oversight.  
 - **<span style="color: #1ABC9C;">Disaster Recovery.</span>** With IaC you can actually recover from disasters more rapidly. Because manually constructed infrastructure needs to be manually rebuilt. But with IaC, you can usually just re-run scripts and have the exact same software provisioned again.  
-- **<span style="color: #E67E22;">Enhanced Security.</span>** IaC relies on automation that removes many security risks associated with human error. When an IaC-based solution is installed correctly, the overall security of your computing architecture and associated data improves massively.  
+- **<span style="color: #E67E22;">Enhanced Security.</span>** IaC relies on automation that removes many security risks associated with human error. When an IaC-based solution is installed correctly, the overall security of your computing architecture and associated data improves massively.
+
+
+  # <span style="color: #FF6B6B;">Basic Terraform Folder Structure</span>
+
+```plaintext
+projectname/
+    |
+    |-- <span style="color: #4ECDC4;">provider.tf</span>
+    |-- <span style="color: #45B7D1;">version.tf</span>
+    |-- <span style="color: #A37EBA;">backend.tf</span>
+    |-- <span style="color: #FFA07A;">main.tf</span>
+    |-- <span style="color: #98D8C8;">variables.tf</span>
+    |-- <span style="color: #F7CAC9;">terraform.tfvars</span>
+    |-- <span style="color: #B5EAD7;">outputs.tf</span>
