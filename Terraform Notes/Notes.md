@@ -123,4 +123,26 @@ Delete an empty workspace
 
 > "With remote state, Terraform writes the state data to a remote data store, which can then be shared between all members of a team."
 
- 
+
+# <span style="color: #FF5733;">State Lock</span>
+
+> "If supported by your backend, Terraform will lock your state for all operations that could write state. This prevents others from acquiring the lock and potentially corrupting your state."
+
+> "State locking happens automatically on all operations that could write state. You won't see any message that it is happening. If state locking fails, Terraform will not continue. You can disable state locking for most commands with the -lock flag but it is not recommended."
+
+---
+
+# <span style="color: #33FF57; background-color: #F0F0F0; padding: 3px;">Setting up our S3 Backend</span>
+
+Create a new file in your working directory labeled `backend.tf`
+
+```hcl
+terraform {
+  backend "s3" {
+    encrypt        = true    
+    bucket         = "sample"
+    dynamodb_table = "terraform-state-lock-dynamo"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+  }
+}
